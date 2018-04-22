@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Current Auction";
+}
+
+<div class="row">
+    <div class="col-md-12"><h1>Current Auctions</h1></div>  
+</div>
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Seller</th>
+                <th>Top Bid</th>
+                <th>Time Remaining</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach(var item in @ViewBag.AllProduct){
+                    <tr>
+                    <td><a asp-area="" asp-controller="Auction" asp-action="ShowProduct" asp-route-itemID =@item.ProductID>@item.Name</a></td>
+                    <td>@item.Seller.FirstName</td>
+                    <td>@item.StartingBid</td>
+                    <td>@item.RemainingDate</td>
+                    @if(ViewBag.CurrentUserID == @item.SellerID)
+                    {
+                        <td><a asp-area="" asp-controller="Auction" asp-action="delete">Delete</a></td>
+                    }else{
+                        <td></td>
+                    }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <a asp-area="" asp-controller="Auction" asp-action="AddNew" class="btn btn-primary" role="button">New Auction</a></td>
+    Your Current Wallet: @ViewBag.Wallet
+

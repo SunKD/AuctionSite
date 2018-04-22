@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+@model Dashboard.Models.RegisterViewModel;
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-controller="Home" asp-action="Register" method="POST" class="form-group">
+            <h1>Register</h1>
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control">
+            <span asp-validation-for="FirstName"></span>
+
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control">
+            <span asp-validation-for="LastName"></span>
+
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" class="form-control"> 
+            <span asp-validation-for="UserName"></span>
+
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="form-control"> 
+            <span asp-validation-for="Password"></span>
+
+            <label asp-for="ConfirmedPW"></label>
+            <input asp-for="ConfirmedPW" class="form-control">
+            <span asp-validation-for="ConfirmedPW"></span>
+            <br>
+            <button type="submit" class="btn btn-info">Create new User</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <form action="LoggingIn" method="POST" class="form-group">
+            <h1>Login</h1>
+            Username: <input type="text" name="username" class="form-control"> 
+            Password: <input type="password" name="loginpw" class="form-control">
+            <br>
+            <input type="submit" name="login" value="Login" class="btn btn-info">
+        </form>
+        <div>
+        @{
+            <span>@ViewBag.Error </span>
+        }
+        </div>
+    </div>
+</div>

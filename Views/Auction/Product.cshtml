@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Current Auction";
+}
+
+<div class="row">
+    <div class="col-md-12"><h1>New Auction</h1></div>
+</div>
+<div>
+    @ViewBag.Error
+</div>
+<div class="row">
+@{
+    <div class="col-md-4"><h1>@ViewBag.Item.Name</h1></div>
+    <div class="col-md-3"><h3>Created by:  @ViewBag.Item.Seller.FirstName</h3></div>
+    <div class="col-md-5"></div>
+
+<div class="row">
+    <div class="col-md-12"><h4>Time Remaining:  @ViewBag.Item.RemainingDate</h4></div>
+</div>
+<div class="row">
+    <div class="col-md-8"><p>@ViewBag.Item.Description</p></div>
+    <div class="col-md-4"></div>
+</div>
+<div class="row">
+    <div class="col-md-3"><h3>Current Highest Bid: </h3></div>
+        @if(ViewBag.Topbidder != null){
+            <div class="col-md-3"><h3>@ViewBag.Topbidder.FirstName</h3></div>
+            <div class="col-md-3"><h3>@ViewBag.Item.StartingBid</h3></div>
+        }else{
+            <div class="col-md-3"><h3>None</h3></div>
+            <div class="col-md-3"><h3>Starting Bid: @ViewBag.Item.StartingBid</h3></div>
+        }
+</div> 
+    <form asp-controller="Auction" asp-action="Bid" method="POST">
+        <input type="number" name="amount" >
+        <input type="submit" value="Bid" class="btn btn-info">
+        <input type="hidden" name="itemID" value=" @ViewBag.Item.ProductID">
+
+    </form>
+}

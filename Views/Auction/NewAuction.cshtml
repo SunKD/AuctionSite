@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Current Auction";
+}
+@model Dashboard.Models.ProductViewModel;
+
+<div class="row">
+    <div class="col-md-12"><h1>New Auction</h1></div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-controller="Auction" asp-action="AddProduct" method="POST" class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control">
+            <span asp-validation-for="Name"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="StartingBid"></label>
+        <input asp-for="StartingBid" class="form-control">
+        <span asp-validation-for="StartingBid"></span>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md-6">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control">
+            <span asp-validation-for="Description"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="EndDate"></label>
+            <input asp-for="EndDate" type="date" class="form-control">
+            <span asp-validation-for="EndDate"></span>
+        </div>
+    </div>
+        <button type="submit" class="btn btn-info">Create Auction</button>
+        </form>
+    </div>
+</div>
+
